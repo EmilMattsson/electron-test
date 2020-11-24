@@ -2,45 +2,43 @@
   <div id="app" v-bind:style="styleObject">
     <img alt="Vue logo" src="./assets/logo.png" />
     <button @click="togglePalette()">
-      {{ this.styleObject.background === 'darkgray' ? 'light' : 'dark' }}
+      {{ this.styleObject.background === "darkgray" ? "light" : "dark" }}
     </button>
     <HelloWorld msg="Hello there..!" />
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import Vue from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
 
-export default {
-  name: 'App',
+export default Vue.extend({
+  name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
   },
   data: () => {
     return {
       styleObject: {
-        background: 'darkgray',
-        color: 'white'
-      }
-    }
+        background: "darkgray",
+        color: "white",
+      },
+    };
   },
   methods: {
     togglePalette() {
-      this.darkMode = !this.darkMode
-      this.styleObject.background === 'darkgray'
-        ? this.styleObject = {
-          background: 'white',
-          color: 'darkgray'
-        }
-        : this.styleObject = {
-          background: 'darkgray',
-          color: 'white'
-        }
-    }
+      this.styleObject.background === "darkgray"
+        ? (this.styleObject = {
+            background: "white",
+            color: "darkgray",
+          })
+        : (this.styleObject = {
+            background: "darkgray",
+            color: "white",
+          });
+    },
   },
-  computed: {
-  }
-}
+});
 </script>
 
 <style>
@@ -50,7 +48,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 0;
   height: 100%;
   width: 100%;
 }
